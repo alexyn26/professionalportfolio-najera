@@ -7,21 +7,36 @@ import Typography from '@mui/material/Typography';
 import Menu from '@mui/material/Menu';
 import MenuIcon from '@mui/icons-material/Menu';
 import Container from '@mui/material/Container';
+import {setPageState} from '../../App'
+
 
 import Button from '@mui/material/Button';
+import { MenuItem } from '@mui/material';
 
 
 
-const pages = ['About Me', 'Portfolio', 'Resume', 'Contact Me'];
 
 
-function ResponsiveAppBar() {
+
+function ResponsiveAppBar({pageState, setPageState})  {
   const [anchorElNav, setAnchorElNav] = React.useState(null);
   const [anchorElUser, setAnchorElUser] = React.useState(null);
 
   const handleOpenNavMenu = (event) => {
     setAnchorElNav(event.currentTarget);
   };
+  const handleOpenAbout = () => {
+    setPageState({...pageState, About:true, Portfolio:false, Contact:false, Resume:false})
+  }
+  const handleOpenContact = () => {
+    setPageState({...pageState, About:false, Portfolio:false, Contact:true, Resume:false})
+  }
+  const handleOpenPortfolio = () => {
+    setPageState({...pageState, About:false, Portfolio:true, Contact:false, Resume:false})
+  }
+  const handleOpenResume = () => {
+    setPageState({...pageState, About:false, Portfolio:false, Contact:false, Resume:true})
+  }
 
   return (
     <AppBar position="static">
@@ -97,15 +112,14 @@ function ResponsiveAppBar() {
             Alex Najera
           </Typography>
           <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
-            {pages.map((page) => (
-              <Button
-                key={page}
-                
-                sx={{ my: 2, color: 'white', display: 'block' }}
-              >
-                {page}
-              </Button>
-            ))}
+            <MenuItem  onClick  = {handleOpenAbout}>
+            <Typography textAlign = "center"> About</Typography></MenuItem>
+            <MenuItem  onClick  = {handleOpenContact}>
+            <Typography textAlign = "center"> Contact Me</Typography></MenuItem>
+            <MenuItem  onClick  = {handleOpenPortfolio}>
+            <Typography textAlign = "center"> Portfolio</Typography></MenuItem>
+            <MenuItem  onClick  = {handleOpenResume}>
+            <Typography textAlign = "center"> Resume</Typography></MenuItem>
           </Box>
 
           
