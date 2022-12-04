@@ -3,7 +3,7 @@ import React from 'react';
 import Input from '@mui/material/Input';
 import FormControl from '@mui/material/FormControl';
 import InputLabel from '@mui/material/FormControl';
-
+import Grid from '@mui/material/Grid';
 
 
 import TextareaAutosize from '@mui/material/TextareaAutosize'
@@ -11,7 +11,7 @@ import TextareaAutosize from '@mui/material/TextareaAutosize'
 const contact = () => {
     return(
         <>
-      
+      <Grid item justify-content = "center" xs ={12} md={12}>
        <h1>Contact Me</h1>
        <FormControl>
        <InputLabel htmlFor="name">Name</InputLabel>
@@ -34,7 +34,7 @@ const contact = () => {
         />
         
 
-
+</Grid>
        
       </>
     )
